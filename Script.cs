@@ -3,7 +3,7 @@ using System.Reflection;
 using System.Windows;
 using VMS.TPS.Common.Model.API;
 
-[assembly: AssemblyVersion("1.0.1.6")]
+[assembly: AssemblyVersion("1.0.1.8")]
 [assembly: AssemblyFileVersion("1.0.0.1")]
 [assembly: AssemblyInformationalVersion("1.0")]
 

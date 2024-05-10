@@ -62,8 +62,29 @@ namespace Optimization
             List<Objective> objectives = GetObjectivesFromFile();
             double plannedDose = Plan.TotalDose.Dose;
 
+            RemoveCurrentObjectives();
+
             foreach (var structure in StructureSet.Structures)
                 AddObjective(structure, objectives, plannedDose);
+        }
+
+        private static void RemoveCurrentObjectives()
+        {
+            if (Plan.OptimizationSetup.Objectives != null)
+                foreach (var objective in Plan.OptimizationSetup.Objectives)
+                    RemoveObjective(objective);
+        }
+
+        private static void RemoveObjective(OptimizationObjective objective)
+        {
+            try
+            {
+                Plan.OptimizationSetup.RemoveObjective(objective);
+            }
+            catch (Exception e)
+            {
+                Logger.WriteError($"Can not remove objective \"{objective.StructureId}\": " + e);
+            }
         }
 
         private static void SetNto()
@@ -90,8 +111,12 @@ namespace Optimization
 
         private static void SwitchCalculationModelToAaa()
         {
+            if (Plan.GetCalculationModel(CalculationType.PhotonVolumeDose).Equals(Config.AaaAlgorithmName))
+                return;
+
             Plan.SetCalculationModel(CalculationType.PhotonVolumeDose, Config.AaaAlgorithmName);
-            MessageBox.Show($"Calculation model switched to {Config.AaaAlgorithmName}.");
+            MessageBox.Show($"Calculation model switched to {Config.AaaAlgorithmName}." +
+                $"\nYou should switch Portal Dose to AAA algorithm.");
         }
 
         private static void FixJaws(IEnumerable<Beam> treatmentBeams)

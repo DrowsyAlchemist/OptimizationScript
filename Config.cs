@@ -24,22 +24,23 @@
 
         public static double OrganUpperPriority { get; private set; } = 60;
 
-        public static double DefaultSmoothX = 40;
-        public static double DefaultSmoothY = 30;
+        public static double DefaultSmoothX { get; private set; } = 40;
+        public static double DefaultSmoothY { get; private set; } = 30;
 
-        public static double NtoPriority = 60;
-        public static double NtoDistanceFromTarget = 3;
-        public static double NtoStartDose = 100;
-        public static double NtoEndDose = 30;
-        public static double NtoFallOff = 0.1;
+        public static double NtoPriority { get; private set; } = 60;
+        public static double NtoDistanceFromTarget { get; private set; } = 3;
+        public static double NtoStartDose { get; private set; } = 100;
+        public static double NtoEndDose { get; private set; } = 30;
+        public static double NtoFallOff { get; private set; } = 0.1;
 
-        public static string HalcyonName = "HAL1335";
-        public static string AaaAlgorithmName = "AAA_15.6.06";
-        public static string CbctName = "CBCT";
+        public static string HalcyonName { get; private set; } = "HAL1335";
+        public static string AaaAlgorithmName { get; private set; } = "AAA_15.6.06";
+       // public static string DvhAlgorithmName { get; private set; } = "DVH Estimation Algorithm [15.6.06]";
+        public static string CbctName { get; private set; } = "CBCT";
 
-        public static string ObjectivesFileName = "Objectives.txt";
+        public static string ObjectivesFileName { get; private set; } = "Objectives.txt";
 
-        public static string CtvPrefix = "CTV";
-        public static string PtvPrefix = "PTV";
+        public static string CtvPrefix { get; private set; } = "CTV";
+        public static string PtvPrefix { get; private set; } = "PTV";
     }
 }
